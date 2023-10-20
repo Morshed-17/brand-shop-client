@@ -5,6 +5,8 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import ErrorPage from '../pages/ErrorPage';
 import AddProduct from '../pages/AddProduct';
+import Products from '../pages/Products';
+import ProductDetail from '../pages/ProductDetail';
 
 const MyRouter = createBrowserRouter([
     {
@@ -26,6 +28,17 @@ const MyRouter = createBrowserRouter([
             {
                 path: '/addproduct',
                 element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/phones/:brand',
+                element: <Products/>,
+                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.brand}`)
+            }, 
+            {
+                path: '/phone/:id',
+                element: <ProductDetail></ProductDetail>,
+                loader: ({params}) => fetch(`http://localhost:5000/phone/${params.id}`)
+
             }
         ]
     }
