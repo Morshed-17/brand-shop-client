@@ -1,7 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext)
+  const handleLogOut = () => {
+    logOut()
+    .then(res => {
+      toast.success("Log Out Successfuly")
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+  console.log(user);
   const navlinks = (
     <>
       <li>
@@ -21,7 +34,7 @@ const Navbar = () => {
             isPending ? "pending" : isActive ? "active" : ""
           }
         >
-          Add Product
+          Add Product 📲
         </NavLink>
       </li>
       <li>
@@ -31,9 +44,15 @@ const Navbar = () => {
             isPending ? "pending" : isActive ? "active" : ""
           }
         >
-          My Cart
+          My Cart 🛒
         </NavLink>
       </li>
+      {
+        user && <div className="flex items-center gap-3">
+        <img className="w-[50px] h-[50px] object-cover rounded-full" src={user?.photoURL} alt="" />
+        <h3>{user?.displayName}</h3>
+      </div>
+      }
     </>
   );
   const [theme, setTheme] = useState(
@@ -53,7 +72,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="navbar ">
+      <div className="navbar items-center ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -82,12 +101,18 @@ const Navbar = () => {
           <a className="btn btn-ghost normal-case text-xl">PhoneBazar</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-3">{navlinks}</ul>
+          <ul className="menu menu-horizontal items-center px-1 gap-3">{navlinks}</ul>
         </div>
         <div className="navbar-end gap-3">
-          <Link to="/login">
-          <button className="btn btn-neutral btn-sm">Login</button>
-          </Link>
+          
+          {
+            user ? <button onClick={handleLogOut} className="btn btn-neutral btn-sm">Logout</button>
+            :
+            <Link to='login'>
+            <button className="btn btn-neutral btn-sm">Log In</button>
+            </Link>
+          }
+          
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
