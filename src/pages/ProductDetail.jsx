@@ -1,6 +1,7 @@
 import { useState } from "react";
+import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
-
+import {AiOutlineStar,AiFillStar  } from 'react-icons/ai'
 const ProductDetail = () => {
   const phone = useLoaderData();
   const { _id, image, name, price, rating, description, brand, type } =
@@ -106,9 +107,14 @@ const ProductDetail = () => {
           <p className="xl:pr-48 text-base lg:leading-tight leading-normal  mt-7">
             {description}
           </p>
-          <p className="text-base leading-4 mt-7 ">
-            Rating: {rating}🌟
-          </p>
+          <div className="text-2xl md:text-2xl text-orange-400 mt-4">
+            <Rating
+              emptySymbol={<AiOutlineStar />}
+              fullSymbol={<AiFillStar/>}
+              initialRating={rating}
+              readonly
+            />
+          </div>
           
         </div>
         <div>
