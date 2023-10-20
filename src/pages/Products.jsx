@@ -23,21 +23,21 @@ const Products = () => {
       >
         <SwiperSlide>
           <img
-            className="w-full h-[500px] object-cover"
+            className="w-full  lg:h-[500px] h-[250px] object-cover"
             src="https://www.erajaya.com/files/uploads/newseventattachment/uri/2021/Jan/15/600188b518f4a/available-web-banner-iphone-12-pro-dekstop-1091x_.jpg?token=3063ae63cef065bef572f6acc6e2787c"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="w-full h-[500px] "
+            className="w-full lg:h-[500px] h-[250px] "
             src="https://www.bhawar.com/images/617a67857dd0ebe3d8f05823_6130875b1de026260d554f62_Samsung%2520Cover.png"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="w-full h-[500px] "
+            className="w-full lg:h-[500px] h-[250px] "
             src="https://www.gloo.com.my/image/cache/catalog/Images/Brand%20Store/MI/202211/Web%20Banner_Xiaomi%2012T%20series%201090X450%20-1090x450.jpg"
             alt=""
           />
@@ -48,7 +48,7 @@ const Products = () => {
         <h2 className="text-4xl font-bold text-center">Products</h2>
             {
               phones.length > 0 ? 
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-16 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-16 gap-6">
                 
                 {
                     phones.map(phone => <PhoneCard key={phone._id} phone={phone}></PhoneCard>)
