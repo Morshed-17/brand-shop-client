@@ -6,7 +6,7 @@ const PhoneCard = ({ phone }) => {
   const navigate = useNavigate()
   return (
     <div>
-      <div className=" flex flex-col  shadow-md w-96 rounded-xl bg-clip-border">
+      <div className=" flex flex-col  shadow-md rounded-xl bg-clip-border">
         <div className="   mx-4 overflow-hidden border rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 p-4">
           <img
             className="h-[200px] mx-auto" 
