@@ -36,7 +36,7 @@ const AddProduct = () => {
     };
     
 
-    fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phones`, {
+    fetch(`https://brand-shop-server-blush-iota.vercel.app/phones`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

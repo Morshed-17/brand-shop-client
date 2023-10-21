@@ -39,7 +39,7 @@ const UpdateProduct = () => {
       type,
     };
     
-    fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phone/${data._id}`, {
+    fetch(`https://brand-shop-server-blush-iota.vercel.app/phone/${data._id}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'

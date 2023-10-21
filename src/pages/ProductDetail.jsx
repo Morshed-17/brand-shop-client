@@ -17,7 +17,7 @@ const ProductDetail = () => {
   } 
   const handleAddtoCart = () => {
     console.log(newCart);
-    fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/mycart`, {
+    fetch(`https://brand-shop-server-blush-iota.vercel.app/mycart`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
