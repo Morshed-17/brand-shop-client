@@ -1,13 +1,37 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
 import {AiOutlineStar,AiFillStar  } from 'react-icons/ai'
+import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 const ProductDetail = () => {
   const phone = useLoaderData();
+  const {user} = useContext(AuthContext)
   const { _id, image, name, price, rating, description, brand, type } =
     phone || {};
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+  const newCart =  {
+    phone,
+    user:user.uid
+  } 
+  const handleAddtoCart = () => {
+    console.log(newCart);
+    fetch(`http://localhost:5000/mycart`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newCart)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Product added to cart")
+});
+
+  }
+
   console.log(phone);
   return (
     <div className="md:flex items-start justify-center py-12">
@@ -102,7 +126,7 @@ const ProductDetail = () => {
             </svg>
           </div>
         </div>
-    <button className="btn btn-neutral w-full">Add to Cart</button>
+    <button onClick={handleAddtoCart} className="btn btn-neutral w-full">Add to Cart</button>
         <div>
           <p className="xl:pr-48 text-base lg:leading-tight leading-normal  mt-7">
             {description}
