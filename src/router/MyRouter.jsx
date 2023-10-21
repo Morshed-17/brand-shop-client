@@ -22,7 +22,7 @@ const MyRouter = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>,
 
-                loader: () => fetch("http://localhost:5000/brands")
+                loader: () => fetch("https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/brands")
 
             },
             {
@@ -40,23 +40,23 @@ const MyRouter = createBrowserRouter([
             {
                 path: '/mycart',
                 element: <PrivateRoute><Cart/></PrivateRoute>,
-                loader: () => fetch(`http://localhost:5000/mycart`)
+                loader: () => fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/mycart`)
             },
             {
                 path: '/updateproduct/:id',
                 element: <PrivateRoute><UpdateProduct/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/phone/${params.id}`)
+                loader: ({params}) => fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phone/${params.id}`)
                 
             },
             {
                 path: '/phones/:brand',
                 element: <Products/>,
-                loader: ({params}) => fetch(`http://localhost:5000/phones/${params.brand}`)
+                loader: ({params}) => fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phones/${params.brand}`)
             }, 
             {
                 path: '/phone/:id',
                 element: <PrivateRoute><ProductDetail/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/phone/${params.id}`)
+                loader: ({params}) => fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phone/${params.id}`)
 
             }
         ]

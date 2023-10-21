@@ -36,7 +36,7 @@ const AddProduct = () => {
     };
     
 
-    fetch(`http://localhost:5000/phones`, {
+    fetch(`https://brand-shop-server-rk92t5zp3-morsheds-projects.vercel.app/phones`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -126,7 +126,7 @@ const AddProduct = () => {
           />
         </div>
         <div className="md:w-1/2">
-          <label htmlFor="rating">Name</label>
+          <label htmlFor="rating">Rating</label>
           <input
             className="w-full rounded-md px-3 py-2 mt-2 border"
             type="text"
