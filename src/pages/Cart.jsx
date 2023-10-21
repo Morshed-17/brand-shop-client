@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import CartCard from "../components/CartCard/CartCard";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const { user } = useContext(AuthContext);
@@ -10,8 +11,17 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const cart = useLoaderData();
   const handleDelete = (id) => {
-    console.log(id);
-    fetch(`https://brand-shop-server-blush-iota.vercel.app/mycart/${id}`, {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://brand-shop-server-blush-iota.vercel.app/mycart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -23,7 +33,10 @@ const Cart = () => {
           setProducts(remainingProducts)
         }
       });
+      }
+    });
   };
+ 
   useEffect(() => {
     const filterCart = cart.filter((prod) => {
       return prod.user === user.uid;
