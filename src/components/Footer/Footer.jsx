@@ -12,7 +12,7 @@ const Footer = () => {
           href="#"
           aria-label="Brand"
         >
-          Brand
+          phoneBazar
         </a>
       </div>
       {/* End Col */}
@@ -111,7 +111,7 @@ const Footer = () => {
             </a>
           </div>
           <p className="mt-3 text-sm ">
-            New UI kits or big discounts. Never spam.
+            Stay updated by subscribing to our newsletter.
           </p>
         </form>
       </div>
